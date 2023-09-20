@@ -14,7 +14,7 @@ SELECT nome AS Nome_Funcionario FROM nome_tabela;
 SELECT nome AS Nome_Empregado FROM nome_tabela
 ORDER BY nome;
 
---  ASC - Ordenar de forma ascendente
+-- ASC - Ordenar de forma ascendente
 SELECT salario AS Salario_Empregado FROM nome_tabela
 ORDER BY nome ASC;
 
