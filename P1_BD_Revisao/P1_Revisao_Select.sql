@@ -10,8 +10,7 @@ SELECT nome FROM nome_tabela;
 -- AS - Colocar um apelido para uma coluna
 SELECT nome AS Nome_Funcionario FROM nome_tabela;
 
--- ORDER BY - Ordenar os registros, 
-na consulta
+-- ORDER BY - Ordenar os registros, na consulta
 SELECT nome AS Nome_Empregado FROM nome_tabela
 ORDER BY nome;
 
