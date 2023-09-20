@@ -23,7 +23,7 @@ SELECT salario AS Salario_Empregado FROM nome_tabela
 ORDER BY nome DESC;
 
 
--- Funções de agregação
+-- Funções de Agregação
 
 -- COUNT - Contar uma quantidade de registros
 SELECT COUNT(*) AS Quant_Empregados FROM nome_tabela;
