@@ -1,74 +1,93 @@
--- Revisão para a P1 - DML (Data Manipulation Language)
+-- RevisÃ£o para a P1 - DML (Data Manipulation Language)
 -- SELECT, Subconsultas, GROUP BY e HAVING 
 
 -- Exibir todos os dados de uma tabela
 SELECT * FROM nome_tabela;
 
--- Exibir os dados de colunas específicas
+-- Exibir os dados de colunas especÃ­ficas
 SELECT nome FROM nome_tabela;
 
 -- AS - Colocar um apelido para uma coluna
 SELECT nome AS Nome_Funcionario FROM nome_tabela;
 
+-- ORDER BY - Ordenar os registros, 
+na consulta
+SELECT nome AS Nome_Empregado FROM nome_tabela
+ORDER BY nome;
 
--- Funções de agregação
+--  ASC - Ordenar de forma ascendente
+SELECT salario AS Salario_Empregado FROM nome_tabela
+ORDER BY nome ASC;
 
--- Média
+-- DESC - Ordenar de forma descendente
+SELECT salario AS Salario_Empregado FROM nome_tabela
+ORDER BY nome DESC;
+
+
+-- FunÃ§Ãµes de agregaÃ§Ã£o
+
+-- COUNT - Contar uma quantidade de registros
+SELECT COUNT(*) AS Quant_Empregados FROM nome_tabela;
+
+-- SUM - Somar todos os valores de uma coluna
+SELECT SUM(salario) AS Soma_dos_Salarios FROM nome_tabela;
+
+-- AVG - MÃ©dia
 SELECT AVG(salario) FROM nome_tabela;
 
--- Menor valor
+-- MIN - Menor valor
 SELECT MIN(salario) FROM nome_tabela;
 
--- Maior valor
+-- MAX - Maior valor
 SELECT MAX(salario) FROM nome_tabela;
 
--- Valores distintos (sem repetição)
+-- DISTINCT - Valores distintos (sem repetiÃ§Ã£o)
 SELECT DISTINCT(salario) FROM nome_tabela;
 
--- Substituir um valor nulo por zero
+-- ISNULL - Substituir um valor nulo, por algum valor
 SELECT ISNULL(salario, 0) AS Salario FROM nome_tabela;
 
 
 -- Operadores IS NULL, IS NOT NULL e IN
 -- Exemplos:
 
--- IS NULL - Verifica se o valor é nulo
+-- IS NULL - Verifica se o valor Ã© nulo
 SELECT nome, salario FROM nome_tabela
 WHERE salario IS NULL;
 
--- IS NOT NULL - Verifica se o valor não é nulo
+-- IS NOT NULL - Verifica se o valor nÃ£o Ã© nulo
 SELECT nome, salario FROM nome_tabela
 WHERE salario IS NOT NULL;
 
--- IN - Reúne um conjunto de valores, para faciltar a consulta
+-- IN - ReÃºne um conjunto de valores, para faciltar a consulta
 SELECT nome, salario FROM nome_tabela
 WHERE salario IN (1000, 2000, 3000);
 
 
--- Subconsultas - São consultas, que ficam dentro de outras consultas.
+-- Subconsultas - SÃ£o consultas, que ficam dentro de outras consultas.
 -- Exemplos:
 
--- Empregados, com sálarios maiores, do que a média salarial de todos os empregados
+-- Empregados, com sÃ¡larios maiores, do que a mÃ©dia salarial de todos os empregados
 SELECT nome, salario FROM empregado
 WHERE salario > (SELECT AVG(salario) FROM empregado);
 
 
--- Funções de Agrupamento
+-- FunÃ§Ãµes de Agrupamento
 
 -- GROUP BY - Ele agrupa um conjunto de registros e ajuda a fazer consultas mais precisas
 -- Exemplo:
 
--- Empregados, com sálarios maiores, do que a média salarial do seu departamento, 
+-- Empregados, com sÃ¡larios maiores, do que a mÃ©dia salarial do seu departamento, 
 -- separados por departamento.
 SELECT nome, salario FROM empregado
 WHERE salario > (SELECT AVG(salario) FROM empregado)
 GROUP BY id_departamento;
 
 
--- O HAVING, é o "filtro" do GROUP BY e funciona quase igual ao WHERE.
+-- O HAVING, Ã© o "filtro" do GROUP BY e funciona quase igual ao WHERE.
 -- Exemplo:
 
--- Funcionários, com sálarios maiores do que 2000 reais e que 
+-- FuncionÃ¡rios, com sÃ¡larios maiores do que 2000 reais e que 
 -- fazem parte dos departamentos, com os IDs 1 e 2
 SELECT nome, salario FROM empregado
 WHERE salario > 2000
